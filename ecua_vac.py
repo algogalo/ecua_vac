@@ -10,9 +10,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth)
 
-# import data from github rep
-df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
-
 # defining variables
 interval = 60 * 60 * 24  # every 24 hours
 # interval = 5  # every 5 seconds, for testing
@@ -23,11 +20,11 @@ future = datetime.date(2021,9,1)
 diff = future - today
 lim_dias=diff.days
 
-
-fecha_rep=df["fecha"].iloc[-1]
 count=1
 
 while True:
+    df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
+    fecha_rep=df["fecha"].iloc[-1]
     vaxs_1dosis=df["primera_dosis"].iloc[-1]
     vaxs_2dosis=df["segunda_dosis"].iloc[-1]
     left_2_vax= int(9e6-vaxs_1dosis)
