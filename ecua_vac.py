@@ -47,5 +47,5 @@ while True:
         api.update_status('Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 dias de gobierno. Voy a buscar algo más que hacer. Chao'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         time.sleep(interval)
 
-p#to run in the back ground <sudo nohup python3 ecua_vac.py &>
+#to run in the back ground <sudo nohup python3 ecua_vac.py &>
 # to check real time log file <sudo tail -f nohup.out>
