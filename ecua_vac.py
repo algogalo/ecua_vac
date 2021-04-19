@@ -31,7 +31,6 @@ while True:
     vaxs_1dosis=df["primera_dosis"].iloc[-1]
     vaxs_2dosis=df["segunda_dosis"].iloc[-1]
     left_2_vax= int(9e6-vaxs_1dosis)
-    left_2_vax= 0
     if left_2_vax > 0:
         print('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con 1 dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 dias'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis),flush=True)
         api.update_status('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de personas vacunadas en 100 dias #accountabilitybot #AI4good'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
