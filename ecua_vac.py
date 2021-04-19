@@ -13,8 +13,8 @@ api = tweepy.API(auth)
 df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
 
 # defining variables
-# interval = 60 * 60 * 24  # every 24 hours
-interval = 5  # every 5 seconds, for testing
+interval = 60 * 60 * 24  # every 24 hours
+# interval = 5  # every 5 seconds, for testing
 lim_dias=135
 vaxs_1dosis=df["primera_dosis"].iloc[-1]
 vaxs_2dosis=df["segunda_dosis"].iloc[-1]
