@@ -33,13 +33,13 @@ while True:
     left_2_vax= int(9e6-vaxs_1dosis)
     if left_2_vax > 0:
         print('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con 1 dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 dias'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis),flush=True)
-        # api.update_status('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de personas vacunadas en 100 dias #accountabilitybot #AI4good'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
+        api.update_status('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de personas vacunadas en 100 dias #accountabilitybot #AI4good'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         lim_dias -= 1
         count +=1
         time.sleep(interval)
     if left_2_vax <= 0:
         print('Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 dias de gobierno. Voy a buscar algo más que hacer. Chao'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis),flush=True)
-        # api.update_status('A Guillermo Lasso le quedan {} dias para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de personas vacunadas en 100 dias #accountabilitybot #AI4good'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
+        api.update_status('Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 dias de gobierno. Voy a buscar algo más que hacer. Chao'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         lim_dias -= 1
         count +=1
         time.sleep(interval)
