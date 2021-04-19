@@ -3,6 +3,8 @@ Bot programadx para recordar diariamente a Guillermo Lasso cuanta gente le falta
 
 Cada día revisa la última entrada en la [fuente](https://github.com/andrab/ecuacovid/blob/master/datos_crudos/vacunas/vacunas.csv) de datos. Cabe recalcar que el MSP no actualiza los datos todos los días.
 
+Por ahora vive en un Raspberry Pi abajo de un piano.
+
 # TO DO
 * Cambiar a que tweetee a una hora específica del día en lugar de cada 24 horas
 
