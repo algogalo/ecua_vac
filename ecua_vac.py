@@ -14,8 +14,8 @@ api = tweepy.API(auth)
 df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
 
 # defining variables
-# interval = 60 * 60 * 24  # every 24 hours
-interval = 5  # every 5 seconds, for testing
+interval = 60 * 60 * 24  # every 24 hours
+# interval = 5  # every 5 seconds, for testing
 
 #define numero de dias hasta el 1 de septiembre
 today = datetime.date.today()
@@ -35,3 +35,5 @@ while True:
     lim_dias -= 1
     count +=1
     time.sleep(interval)
+#to run in the back ground <sudo nohup python3 ecua_vac.py &>
+# to check real time log file <sudo tail -f nohup.out>
