@@ -1,6 +1,7 @@
 import tweepy
 import time
 import pandas as pd
+import datetime
 
 from auth import consumer_key,consumer_secret,key,secret
 
@@ -13,9 +14,15 @@ api = tweepy.API(auth)
 df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
 
 # defining variables
-interval = 60 * 60 * 24  # every 24 hours
-# interval = 5  # every 5 seconds, for testing
-lim_dias=135
+# interval = 60 * 60 * 24  # every 24 hours
+interval = 5  # every 5 seconds, for testing
+
+#define numero de dias hasta el 1 de septiembre
+today = datetime.date.today()
+future = datetime.date(2021,9,1)
+diff = future - today
+lim_dias=diff.days
+
 vaxs_1dosis=df["primera_dosis"].iloc[-1]
 vaxs_2dosis=df["segunda_dosis"].iloc[-1]
 left_2_vax= int(9e6-vaxs_1dosis)
