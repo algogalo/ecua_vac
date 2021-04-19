@@ -24,7 +24,7 @@ count=1
 
 while True:
     print('A Guillermo Lasso le quedan {} dias para vacunar {} de personas. Hasta el {} el MSP ha reportado {} personas vacunadas con 1 dosis y {} de personas con dos dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 dias'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
-    api.update_status('Guillermo Lasso le quedan {} dias para vacunar {} de personas. Hasta el {} el MSP ha reportado {} personas vacunadas. Su ofrecimiento en campaña: 9M de vacunadxs en 100 dias'.format(lim_dias, left_2_vax, fecha_rep,vaxs))
+    api.update_status('A Guillermo Lasso le quedan {} dias para vacunar {} de personas. Hasta el {} el MSP ha reportado {} personas vacunadas con 1 dosis y {} de personas con dos dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 dias'.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
     lim_dias -= 1
     count +=1
     time.sleep(interval)
