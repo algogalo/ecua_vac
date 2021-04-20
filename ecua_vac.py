@@ -3,7 +3,7 @@ import time
 import pandas as pd
 import datetime
 
-from auth import consumer_key,consumer_secret,key,secret
+from auth import consumer_key,consumer_secret,key,secret,user_ID
 
 # twitter auth process
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -31,6 +31,7 @@ while True:
     if (left_2_vax > 0 and lim_dias > 0):
         tweet='A G.Lasso le quedan {} días para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 días'
         print(tweet.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis),flush=True)
+        api.send_direct_message(user_ID, tweet.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         api.update_status(tweet.format(lim_dias, left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         lim_dias -= 1
         time.sleep(interval)
@@ -39,6 +40,7 @@ while True:
     elif (left_2_vax > 0 and lim_dias <= 0):
         tweet='Hace {} días G.Lasso debería haber vacunado 9M de personas y todavia le faltan {} personas para llegar a 9M. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis #accountabilitybot #AI4good'
         print(tweet.format(abs(lim_dias), left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis),flush=True)
+        api.send_direct_message(user_ID, tweet.format(abs(lim_dias), left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         api.update_status(tweet.format(abs(lim_dias), left_2_vax, fecha_rep,vaxs_1dosis,vaxs_2dosis))
         lim_dias -= 1
         time.sleep(interval)
@@ -47,6 +49,7 @@ while True:
     elif left_2_vax <= 0:
         tweet='Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 días de gobierno. Voy a buscar algo más que hacer. Chao #accountabilitybot #AI4good'
         print(tweet,flush=True)
+        api.send_direct_message(user_ID, tweet)
         api.update_status(tweet)
         time.sleep(interval)
 
