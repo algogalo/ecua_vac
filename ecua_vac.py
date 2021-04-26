@@ -67,6 +67,7 @@ while True:
 
     #escenario3 en el que vacuna a 9M antes de que se acabe el tiempo
     else #!((a and b) or (a and !b)) = !a
+    else: #!((a and b) or (a and !b)) = !a
         tweet= 'Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 días de gobierno. Voy a buscar algo más que hacer. Chao #accountabilitybot #AI4good'
         tweet = trimtweet(tweet)
         print(tweet,flush=True)
