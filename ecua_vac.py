@@ -64,8 +64,6 @@ while True:
     dosis_lasso=ult_total-dosis_24may
     left_2_vax_lasso= int(9e6-dosis_lasso)
 
-
-
     #escenario1 en el que todavia tiene tiempo pero no acaba de vacunar
     if (left_2_vax > 0 and lim_dias > 0):
         tweet= 'A G.Lasso le quedan {} días para vacunar {} personas. Hasta el {} el MSP ha reportado {} de vacunadxs con una dosis, {} con dos dosis. Hay {} de personas por vacunar contando desde el inicio del gobierno. Ofreció 9M de vacunadxs en 100 días'
@@ -73,7 +71,7 @@ while True:
         tweet=trimtweet(tweet)
         print(tweet, flush=True)
         api.send_direct_message(user_ID, tweet)
-        api.update_status(tweet)A G.Lasso le quedan 23 días para vacunar 1.000.000 personas. Hasta el 24/23/23 el MSP ha reportado 1.000.000 de vacunadxs con una dosis, 1.000.000 con dos dosis. Hay 1.000.000 de personas por vacunar contando desde el inicio del gobierno. Ofreció: 9M de vacunadxs en 100 días
+        api.update_status(tweet)
         time.sleep(interval)
 
     #escenario2 en el que se le acabo el tiempo. recordatorio de cuantos dias va sin cumplir so objetivo
@@ -85,7 +83,6 @@ while True:
         api.send_direct_message(user_ID, tweet)
         api.update_status(tweet)
         time.sleep(interval)
-
 
     #escenario4 en el que vacuna a 9M antes de que se acabe el tiempo
     else: #!((a and b) or (a and !b)) = !a
