@@ -36,7 +36,7 @@ def format_num(num):
 
 while True:
     df=pd.read_csv("https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/vacunas.csv")
-    fecha_rep=df["fecha"].iloc[-1]
+    fecha_rep=df["fecha"].iloc[-1] #ultima fecha disponible
     ult_fecha_datos = datetime.datetime.strptime(df["fecha"].iloc[-1], '%d/%m/%Y')
 
     #revisa el la fecha de los datos del tweet anterior. notifica si el tuit es repetido.
@@ -58,27 +58,36 @@ while True:
     left_2_vax= int(9e6-vaxs_1dosis)
     lim_dias=calc_dias()
 
+    #calculo desde vax desde el 24 de mayo
+    dosis_24may=df.loc[df["fecha"]=="25/05/2021","dosis_total"]
+    ult_total=df["dosis_total"].iloc[-1]
+    dosis_lasso=ult_total-dosis_24may
+    left_2_vax_lasso= int(9e6-dosis_lasso)
+
+
+
     #escenario1 en el que todavia tiene tiempo pero no acaba de vacunar
     if (left_2_vax > 0 and lim_dias > 0):
-        tweet= 'A G.Lasso le quedan {} días para vacunar {} personas. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis. Su ofrecimiento en campaña: 9M de vacunadxs en 100 días'
-        tweet=tweet.format(lim_dias,format_num(left_2_vax),fecha_rep,format_num(vaxs_1dosis),format_num(vaxs_2dosis))
+        tweet= 'A G.Lasso le quedan {} días para vacunar {} personas. Hasta el {} el MSP ha reportado {} de vacunadxs con una dosis, {} con dos dosis. Hay {} de personas por vacunar contando desde el inicio del gobierno. Ofreció 9M de vacunadxs en 100 días'
+        tweet=tweet.format(lim_dias,format_num(left_2_vax),fecha_rep,format_num(vaxs_1dosis),format_num(vaxs_2dosis),format_num(left_2_vax_lasso))
+        tweet=trimtweet(tweet)
+        print(tweet, flush=True)
+        api.send_direct_message(user_ID, tweet)
+        api.update_status(tweet)A G.Lasso le quedan 23 días para vacunar 1.000.000 personas. Hasta el 24/23/23 el MSP ha reportado 1.000.000 de vacunadxs con una dosis, 1.000.000 con dos dosis. Hay 1.000.000 de personas por vacunar contando desde el inicio del gobierno. Ofreció: 9M de vacunadxs en 100 días
+        time.sleep(interval)
+
+    #escenario2 en el que se le acabo el tiempo. recordatorio de cuantos dias va sin cumplir so objetivo
+    elif (left_2_vax > 0 and lim_dias <= 0):
+        tweet='Hace {} días G.Lasso debería haber vacunado 9M de personas. Todavía faltan {} vacunadxs para cumplir. Hasta el {} el MSP ha reportado 1.825.096 vacunadxs con una dosis, {} vacunadxs con dos dosis. Todavía {} de personas por vacunar desde su gobierno'
+        tweet=tweet.format(abs(lim_dias), format_num(left_2_vax), fecha_rep,format_num(vaxs_1dosis),format_num(vaxs_2dosis),format_num(left_2_vax_lasso))
         tweet=trimtweet(tweet)
         print(tweet, flush=True)
         api.send_direct_message(user_ID, tweet)
         api.update_status(tweet)
         time.sleep(interval)
 
-    #escenario2 en el que se le acabo el tiempo. recordatorio de cuantos dias va sin cumplir so objetivo
-    elif (left_2_vax > 0 and lim_dias <= 0):
-        tweet='Hace {} días G.Lasso debería haber vacunado 9M de personas y todavia le faltan {} personas para llegar a 9M. Hasta el {} el MSP ha reportado {} personas vacunadas con primera dosis, {} personas con segunda dosis #accountabilitybot #AI4good'
-        print(tweet.format(abs(lim_dias), format_num(left_2_vax), fecha_rep,format_num(vaxs_1dosis),format_num(vaxs_2dosis)),flush=True)
-        tweet=tweet.format(abs(lim_dias), format_num(left_2_vax), fecha_rep,format_num(vaxs_1dosis),format_num(vaxs_2dosis))
-        tweet=trimtweet(tweet)
-        api.send_direct_message(user_ID, tweet)
-        api.update_status(tweet)
-        time.sleep(interval)
 
-    #escenario3 en el que vacuna a 9M antes de que se acabe el tiempo
+    #escenario4 en el que vacuna a 9M antes de que se acabe el tiempo
     else: #!((a and b) or (a and !b)) = !a
         tweet= 'Guillermo Lasso logró vacunar al menos 9M personas en sus primeros 100 días de gobierno. Voy a buscar algo más que hacer. Chao #accountabilitybot #AI4good'
         tweet = trimtweet(tweet)
