@@ -2,6 +2,11 @@
 [![@analogalo](https://img.shields.io/badge/twitter-@analogalo-1DA1F3?style=flat-square)](https://twitter.com/analogalo)
 
 # ecua_vac_bot
+
+English
+This is a twitter bot that tweets updates on the amount of people that the President of Ecuador promised to vaccinate against Covid-19.
+
+Spanish
 Bot programadx para recordar diariamente en twitter a Guillermo Lasso cuanta gente le falta vacunar según su promesa de campaña. [Datos](https://github.com/andrab/ecuacovid) del Ministerio de Salud Pública del Ecuador recopilados y publicados por [Andrab S.A](https://github.com/andrab).
 
 Cada día reviso la última entrada en la [fuente](https://github.com/andrab/ecuacovid/blob/master/datos_crudos/vacunas/vacunas.csv) de datos. Cabe recalcar que el MSP no actualiza los datos todos los días.
